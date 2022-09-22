@@ -1,6 +1,8 @@
 package com.example.backendmodule.controller;
 
+import com.example.backendmodule.model.WeatherDto;
 import com.example.backendmodule.service.WeatherService;
+import com.example.backendmodule.weatherclient.response.WeatherServiceResponseDto;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,7 +19,7 @@ public class WeatherController {
     }
 
     @GetMapping("/weather")
-    public String getWeatherForCity(@RequestParam("city") String city){
+    public WeatherDto getWeatherForCity(@RequestParam("city") String city){
 
         return weatherService.getWeatherForCity(city);
     }

@@ -1,6 +1,8 @@
 package com.example.backendmodule.service;
 
+import com.example.backendmodule.model.WeatherDto;
 import com.example.backendmodule.weatherclient.WeatherClient;
+import com.example.backendmodule.weatherclient.response.WeatherServiceResponseDto;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -13,7 +15,7 @@ public class WeatherService {
     }
 
 
-    public String getWeatherForCity(String city) {
+    public WeatherDto getWeatherForCity(String city) {
         return weatherClient.getWeatherForCity(city);
     }
 }
