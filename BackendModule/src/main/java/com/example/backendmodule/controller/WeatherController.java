@@ -1,6 +1,7 @@
 package com.example.backendmodule.controller;
 
 import com.example.backendmodule.service.WeatherService;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,6 +13,11 @@ public class WeatherController {
 
     public WeatherController(WeatherService weatherService) {
         this.weatherService = weatherService;
+    }
+
+    @GetMapping("/weather")
+    public String getWeather(){
+        return weatherService.getWeather();
     }
 
 

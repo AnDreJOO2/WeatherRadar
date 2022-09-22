@@ -1,4 +1,4 @@
-package com.example.backendmodule.configuration;
+package com.example.backendmodule.weatherclient.configuration;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
