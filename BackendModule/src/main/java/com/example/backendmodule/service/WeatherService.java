@@ -12,7 +12,8 @@ public class WeatherService {
         this.weatherClient = weatherClient;
     }
 
-    public String getWeather(){
-        return weatherClient.getApiCall();
+
+    public String getWeatherForCity(String city) {
+        return weatherClient.getWeatherForCity(city);
     }
 }
