@@ -1,6 +1,9 @@
 package com.example.backendmodule.weatherclient;
 
+import com.example.backendmodule.model.WeatherDto;
 import com.example.backendmodule.weatherclient.configuration.WeatherApiConfiguration;
+import com.example.backendmodule.weatherclient.mapper.ResponseMapper;
+import com.example.backendmodule.weatherclient.response.WeatherServiceResponseDto;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
@@ -18,11 +21,12 @@ public class WeatherClient {
         this.configuration = configuration;
     }
 
-    public String getWeatherForCity(String city) {
-        return getApiCall("weather?appid={API_KEY}&q={city}",
-                String.class,
+    public WeatherDto getWeatherForCity(String city) {
+        WeatherServiceResponseDto response = getApiCall("weather?appid={API_KEY}&q={city}",
+                WeatherServiceResponseDto.class,
                 configuration.getAPI_KEY(),
                 city);
+        return ResponseMapper.mapWeatherServiceResponseToDto().apply(response);
     }
 
     public <T> T getApiCall(String url, Class<T> responseType, Object... objects) {
