@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import * as L from 'leaflet'
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-searcher',
@@ -8,9 +7,19 @@ import * as L from 'leaflet'
 })
 export class SearcherComponent implements OnInit {
 
-  constructor() { }
+  cityName: string = '';
+
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
 
+  lookForWeather() {
+
+  }
+
+  ResetCityInput() {
+    this.cityName = '';
+  }
 }
