@@ -8,7 +8,7 @@
     <div class="col-sm-2">
       <div>
         <div class="col-sm-6 float-start">
-          <button class="btn btn-success" [disabled]="cityName === ''" (click)="lookForWeather()">Find</button>
+          <button class="btn btn-success" [disabled]="cityName === ''" (click)="getWeatherForCity()">Find</button>
         </div>
         <div class="col-sm-6 float-end">
           <button class="btn btn-danger" [disabled]="cityName === ''" (click)="ResetCityInput()">Reset</button>
