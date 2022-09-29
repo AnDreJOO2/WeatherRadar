@@ -2,6 +2,8 @@ package com.example.backendmodule.model;
 
 public class WeatherDto {
 
+    private float lon;
+    private float lat;
     private final String country;
     private final String cityName;
     private final String description;
@@ -21,6 +23,8 @@ public class WeatherDto {
     private final float cloudPercentage;
 
     private WeatherDto(WeatherDtoBuilder builder) {
+        this.lon = builder.lon;
+        this.lat = builder.lat;
         this.country = builder.country;
         this.cityName = builder.cityName;
         this.description = builder.description;
@@ -43,7 +47,9 @@ public class WeatherDto {
     @Override
     public String toString() {
         return "WeatherDto{" +
-                "country='" + country + '\'' +
+                "lon=" + lon +
+                ", lat=" + lat +
+                ", country='" + country + '\'' +
                 ", cityName='" + cityName + '\'' +
                 ", description='" + description + '\'' +
                 ", sunrise=" + sunrise +
@@ -58,6 +64,14 @@ public class WeatherDto {
                 ", windSpeed=" + windSpeed +
                 ", cloudPercentage=" + cloudPercentage +
                 '}';
+    }
+
+    public float getLon() {
+        return lon;
+    }
+
+    public float getLat() {
+        return lat;
     }
 
     public String getCountry() {
@@ -118,6 +132,9 @@ public class WeatherDto {
 
     public static class WeatherDtoBuilder {
 
+        private float lon;
+        private float lat;
+
         private String country;
         private String cityName;
         private String description;
@@ -135,6 +152,16 @@ public class WeatherDto {
 
         private float windSpeed;
         private float cloudPercentage;
+
+        public WeatherDtoBuilder withLon(float lon) {
+            this.lon = lon;
+            return this;
+        }
+
+        public WeatherDtoBuilder withLat(float lat) {
+            this.lat = lat;
+            return this;
+        }
 
         public WeatherDtoBuilder withCountry(String country) {
             this.country = country;

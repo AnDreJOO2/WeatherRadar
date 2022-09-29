@@ -4,6 +4,8 @@ import java.util.List;
 
 public class WeatherServiceResponseDto {
 
+    private WeatherServiceResponseCoordDto coord;
+
     private List<WeatherServiceResponseWeatherDto> weather;
     private WeatherServiceResponseMainDto main;
     private WeatherServiceResponseWindDto wind;
@@ -12,6 +14,10 @@ public class WeatherServiceResponseDto {
 
     private int visibility;
     private String name;
+
+    public WeatherServiceResponseCoordDto getCoord() {
+        return coord;
+    }
 
     public List<WeatherServiceResponseWeatherDto> getWeather() {
         return weather;
