@@ -10,6 +10,8 @@ public class ResponseMapper {
     public static Function<WeatherServiceResponseDto, WeatherDto> mapWeatherServiceResponseToDto(){
         return response ->
                 new WeatherDto.WeatherDtoBuilder()
+                        .withLon(response.getCoord().getLon())
+                        .withLat(response.getCoord().getLat())
                         .withCountry(response.getSys().getCountry())
                         .withCityName(response.getName())
                         .withDescription(String.valueOf(response.getWeather().stream().map(element -> element.getDescription()).findFirst()))
