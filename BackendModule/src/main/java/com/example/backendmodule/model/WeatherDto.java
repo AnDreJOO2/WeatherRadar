@@ -1,15 +1,19 @@
 package com.example.backendmodule.model;
 
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+
 public class WeatherDto {
 
-    private float lon;
-    private float lat;
+    private final float lon;
+    private final float lat;
     private final String country;
     private final String cityName;
     private final String description;
 
-    private final long sunrise;
-    private final long sunset;
+    private final ZonedDateTime sunrise;
+    private final ZonedDateTime sunset;
     private final int visibilityInMeters;
 
     private final float temperature;
@@ -86,11 +90,11 @@ public class WeatherDto {
         return description;
     }
 
-    public long getSunrise() {
+    public ZonedDateTime getSunrise() {
         return sunrise;
     }
 
-    public long getSunset() {
+    public ZonedDateTime getSunset() {
         return sunset;
     }
 
@@ -139,8 +143,8 @@ public class WeatherDto {
         private String cityName;
         private String description;
 
-        private long sunrise;
-        private long sunset;
+        private ZonedDateTime sunrise;
+        private ZonedDateTime sunset;
         private int visibilityInMeters;
 
         private float temperature;
@@ -179,12 +183,14 @@ public class WeatherDto {
         }
 
         public WeatherDtoBuilder withSunrise(long sunrise) {
-            this.sunrise = sunrise;
+            Instant instant = Instant.ofEpochSecond(sunrise);
+            this.sunrise = instant.atZone(ZoneId.of("Europe/Warsaw"));
             return this;
         }
 
         public WeatherDtoBuilder withSunset(long sunset) {
-            this.sunset = sunset;
+            Instant instant = Instant.ofEpochSecond(sunset);
+            this.sunset = instant.atZone(ZoneId.of("Europe/Warsaw"));
             return this;
         }
 
