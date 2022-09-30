@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {WeatherService} from "../../services/weather.service";
+import {WeatherDto} from "../../interfaces/weather-dto";
 
 @Component({
   selector: 'app-searcher',
@@ -10,19 +11,19 @@ export class SearcherComponent implements OnInit {
 
   cityName: string = '';
 
-  constructor(private http: HttpClient) {
+  constructor(private weatherService: WeatherService) {
   }
 
   ngOnInit(): void {
   }
 
   getWeatherForCity() {
-    let city = new URLSearchParams();
-    city.append("city", this.cityName)
-    this.http.get("http://localhost:8080/api/weather?city="+this.cityName)
-      .subscribe(cityWeather =>{
-        console.log(cityWeather)
-      });
+    this.weatherService.getWeatherForCity(this.cityName).subscribe(
+      (responseData: WeatherDto) => {
+        console.log(responseData)
+      }
+    );
+    this.ResetCityInput();
   }
 
   ResetCityInput() {
