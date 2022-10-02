@@ -2,13 +2,13 @@
   <div class="row">
     <div class="col-sm-10">
       <div class="col-sm-3 float-end">
-        <input class="form-control" type="text" placeholder="Type city name" [(ngModel)]="cityName">
+        <input (keydown.enter)="checkIfCityNameIsEmpty()" class="form-control" type="text" placeholder="Type city name" [(ngModel)]="cityName">
       </div>
     </div>
     <div class="col-sm-2">
       <div>
         <div class="col-sm-6 float-start">
-          <button class="btn btn-success" [disabled]="cityName === ''" (click)="getWeatherForCity()">Find</button>
+          <button class="btn btn-success" [disabled]="cityName === ''" (click)="checkIfCityNameIsEmpty()">Find</button>
         </div>
         <div class="col-sm-6 float-end">
           <button class="btn btn-danger" [disabled]="cityName === ''" (click)="ResetCityInput()">Reset</button>

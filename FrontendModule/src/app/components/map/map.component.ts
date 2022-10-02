@@ -11,7 +11,7 @@ import {WeatherDto} from "../../interfaces/weather-dto";
 })
 export class MapComponent implements OnInit {
   map: Map;
-  marker: L.Marker;
+  markers: L.Marker[] = [];
 
   constructor(private weatherService: WeatherService) {
 
@@ -30,7 +30,27 @@ export class MapComponent implements OnInit {
   }
 
   pinPlace(responseData: WeatherDto) {
-    this.marker = L.marker([responseData.lat, responseData.lon]).addTo(this.map);
+    if (this.markers.length > 0) {
+      this.clearPin();
+    }
+
+    let marker = L.marker([responseData.lat, responseData.lon])
+      .bindPopup('Wind speed: ' + responseData.windSpeed + "</br>" +
+        'minimumTemperature: ' + responseData.minimumTemperature + "</br>" +
+        'maximumTemperature: ' + responseData.maximumTemperature + "</br>" +
+        'cloudPercentage: ' + responseData.cloudPercentage + "</br>" +
+        'pressure: ' + responseData.pressure + "</br>" +
+        'humidity: ' + responseData.humidity + "</br>")
+      .openPopup()
+      .addTo(this.map);
+
+    this.markers.push(marker);
+    this.map.setView([marker.getLatLng().lat, marker.getLatLng().lng], 10);
   }
+
+  clearPin() {
+    this.map.removeLayer(this.markers[this.markers.length - 1])
+  }
+
 
 }
