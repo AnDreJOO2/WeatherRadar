@@ -3,6 +3,8 @@ import * as L from "leaflet";
 import {Map} from "leaflet";
 import {WeatherService} from "../../services/weather.service";
 import {WeatherDto} from "../../interfaces/weather-dto";
+import {DialogComponent} from "./dialog/dialog.component";
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-map',
@@ -13,7 +15,7 @@ export class MapComponent implements OnInit {
   map: Map;
   markers: L.Marker[] = [];
 
-  constructor(private weatherService: WeatherService) {
+  constructor(private weatherService: WeatherService, public dialog: MatDialog) {
 
   }
 
@@ -35,22 +37,26 @@ export class MapComponent implements OnInit {
     }
 
     let marker = L.marker([responseData.lat, responseData.lon])
-      .bindPopup('Wind speed: ' + responseData.windSpeed + "</br>" +
-        'minimumTemperature: ' + responseData.minimumTemperature + "</br>" +
-        'maximumTemperature: ' + responseData.maximumTemperature + "</br>" +
-        'cloudPercentage: ' + responseData.cloudPercentage + "</br>" +
-        'pressure: ' + responseData.pressure + "</br>" +
-        'humidity: ' + responseData.humidity + "</br>")
       .openPopup()
+      .on("click",() => this.openDialog(responseData))
       .addTo(this.map);
 
     this.markers.push(marker);
     this.map.setView([marker.getLatLng().lat, marker.getLatLng().lng], 10);
+
   }
 
   clearPin() {
     this.map.removeLayer(this.markers[this.markers.length - 1])
   }
 
+  openDialog(responseData: WeatherDto) {
+    let dialog = this.dialog.open(DialogComponent, {
+      data: responseData
+    });
+
+
+  }
 
 }
+
