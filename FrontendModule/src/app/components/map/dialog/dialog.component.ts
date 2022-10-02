@@ -9,6 +9,8 @@ import {MAT_DIALOG_DATA} from "@angular/material/dialog";
 })
 export class DialogComponent implements OnInit {
 
+
+
   weatherDto(): WeatherDto {
     return this._weatherDto;
   }
