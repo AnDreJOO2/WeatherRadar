@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {WeatherService} from "../../services/weather.service";
-import {WeatherDto} from "../../interfaces/weather-dto";
 
 @Component({
   selector: 'app-searcher',
@@ -17,16 +16,19 @@ export class SearcherComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  checkIfCityNameIsEmpty(){
+    if(this.cityName !== ""){
+      this.getWeatherForCity();
+    }
+  }
+
   getWeatherForCity() {
-    this.weatherService.getWeatherForCity(this.cityName).subscribe(
-      (responseData: WeatherDto) => {
-        console.log(responseData)
-      }
-    );
+    this.weatherService.getWeatherForCity(this.cityName);
     this.ResetCityInput();
   }
 
   ResetCityInput() {
     this.cityName = '';
   }
+
 }
