@@ -4,26 +4,30 @@ import {WeatherDto} from "../interfaces/weather-dto";
 import {Subject} from "rxjs";
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class WeatherService {
 
-  weatherObject = new Subject<WeatherDto>();
+    weatherObject = new Subject<WeatherDto>();
 
-  constructor(private http: HttpClient) {
-  }
+    constructor(private http: HttpClient) {
+    }
 
-  getWeatherForCity(cityName: string) {
-    let weatherDtoObservable = this.http.get<WeatherDto>("http://localhost:8080/api/weather?city=" + cityName);
-    weatherDtoObservable.subscribe(responseData => {
-      this.sendDataToMapComponent(responseData);
-    })
+    getWeatherForCity(cityName: string) {
+        let weatherDtoObservable = this.http.get<WeatherDto>("http://localhost:8080/api/weather?city=" + cityName);
+        weatherDtoObservable.subscribe(responseData => {
+            this.sendDataToMapComponent(responseData);
+        })
 
-  }
+    }
 
-  sendDataToMapComponent(weatherDtoObservable: WeatherDto) {
-    this.weatherObject.next(weatherDtoObservable);
-  }
+    getWeatherForCoords(lat: number, lon: number) {
+        return this.http.get<WeatherDto>("http://localhost:8080/api/weather/coords?lat=" + lat + "&lon=" + lon);
+    }
+
+    sendDataToMapComponent(weatherDtoObservable: WeatherDto) {
+        this.weatherObject.next(weatherDtoObservable);
+    }
 
 
 }

@@ -26,9 +26,19 @@ export class MapComponent implements OnInit {
       attribution: '© OpenStreetMap'
     }).addTo(this.map);
 
+    this.map.doubleClickZoom.disable();
+
     this.weatherService.weatherObject.subscribe(responseData => {
       this.pinPlace(responseData);
     });
+
+    this.map.on(
+        "dblclick", data => this.weatherService.getWeatherForCoords(data.latlng.lat, data.latlng.lng).subscribe(
+            responseData => {
+              this.pinPlace(responseData)
+            }
+        ))
+
   }
 
   pinPlace(responseData: WeatherDto) {
