@@ -12,7 +12,6 @@ public class ForecastServiceResponseListDto {
     private ForecastServiceResponseWindDto wind;
 
     private int visibility;
-    private String dt_txt;
 
     public long getDt() {
         return dt;
@@ -38,7 +37,4 @@ public class ForecastServiceResponseListDto {
         return visibility;
     }
 
-    public String getDt_txt() {
-        return dt_txt;
-    }
 }

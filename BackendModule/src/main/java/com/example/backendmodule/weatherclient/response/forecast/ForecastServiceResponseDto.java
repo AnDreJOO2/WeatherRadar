@@ -1,13 +1,13 @@
 package com.example.backendmodule.weatherclient.response.forecast;
 
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class ForecastServiceResponseDto {
 
     private int cod;
     private int cnt;
-    private ArrayList<ForecastServiceResponseListDto> list;
+    private List<ForecastServiceResponseListDto> list;
     private ForecastServiceResponseCityDto city;
 
     public int getCod() {
@@ -18,7 +18,7 @@ public class ForecastServiceResponseDto {
         return cnt;
     }
 
-    public ArrayList<ForecastServiceResponseListDto> getList() {
+    public List<ForecastServiceResponseListDto> getList() {
         return list;
     }
 

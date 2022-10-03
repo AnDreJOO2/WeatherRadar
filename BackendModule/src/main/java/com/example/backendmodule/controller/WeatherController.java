@@ -1,8 +1,8 @@
 package com.example.backendmodule.controller;
 
+import com.example.backendmodule.model.ForecastDto;
 import com.example.backendmodule.model.WeatherDto;
 import com.example.backendmodule.service.WeatherService;
-import com.example.backendmodule.weatherclient.response.forecast.ForecastServiceResponseDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -29,7 +29,7 @@ public class WeatherController {
     }
 
     @GetMapping("/forecast")
-    public ResponseEntity<ForecastServiceResponseDto> getForecast(@RequestParam("lat") float lat, @RequestParam("lon") float lon) {
+    public ResponseEntity<ForecastDto> getForecast(@RequestParam("lat") float lat, @RequestParam("lon") float lon) {
         return new ResponseEntity<>(weatherService.getForecast(lat, lon), HttpStatus.OK);
     }
 
