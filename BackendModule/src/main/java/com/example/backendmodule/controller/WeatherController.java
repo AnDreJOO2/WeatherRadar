@@ -22,5 +22,10 @@ public class WeatherController {
         return new ResponseEntity<>(weatherService.getWeatherForCity(city), HttpStatus.OK);
     }
 
+    @GetMapping("/weather/coords")
+    public ResponseEntity<WeatherDto> getWeatherForCoords(@RequestParam("lat") float lat, @RequestParam("lon") float lon) {
+        return new ResponseEntity<>(weatherService.getWeatherForCoords(lat, lon), HttpStatus.OK);
+    }
+
 
 }
