@@ -1,8 +1,10 @@
 package com.example.backendmodule.weatherclient;
 
+import com.example.backendmodule.model.ForecastDto;
 import com.example.backendmodule.model.WeatherDto;
 import com.example.backendmodule.weatherclient.configuration.WeatherApiConfiguration;
-import com.example.backendmodule.weatherclient.mapper.ResponseMapper;
+import com.example.backendmodule.weatherclient.mapper.ForecastResponseMapper;
+import com.example.backendmodule.weatherclient.mapper.WeatherResponseMapper;
 import com.example.backendmodule.weatherclient.response.forecast.ForecastServiceResponseDto;
 import com.example.backendmodule.weatherclient.response.weather.WeatherServiceResponseDto;
 import org.springframework.stereotype.Component;
@@ -27,7 +29,7 @@ public class WeatherClient {
                 WeatherServiceResponseDto.class,
                 configuration.getAPI_KEY(),
                 city);
-        return ResponseMapper.mapWeatherServiceResponseToDto().apply(response);
+        return WeatherResponseMapper.mapWeatherServiceResponseToDto().apply(response);
     }
 
     public WeatherDto getWeatherForCoords(float lat, float lon) {
@@ -36,15 +38,16 @@ public class WeatherClient {
                 configuration.getAPI_KEY(),
                 lat,
                 lon);
-        return ResponseMapper.mapWeatherServiceResponseToDto().apply(response);
+        return WeatherResponseMapper.mapWeatherServiceResponseToDto().apply(response);
     }
 
-    public ForecastServiceResponseDto getForecast(float lat, float lon) {
-        return getApiCall("forecast?appid={API_KEY}&lat={lat}&lon={lon}",
+    public ForecastDto getForecast(float lat, float lon) {
+        ForecastServiceResponseDto response = getApiCall("forecast?appid={API_KEY}&lat={lat}&lon={lon}",
                 ForecastServiceResponseDto.class,
                 configuration.getAPI_KEY(),
                 lat,
                 lon);
+        return ForecastResponseMapper.mapForecastServiceResponseDtoToForecastDto().apply(response);
     }
 
     public <T> T getApiCall(String url, Class<T> responseType, Object... objects) {

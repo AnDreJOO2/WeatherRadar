@@ -1,5 +1,7 @@
 package com.example.backendmodule.model;
 
+import java.time.ZoneOffset;
+
 import static com.example.backendmodule.weatherclient.response.forecast.processing.Utils.getFormattedLocalDateTime;
 
 public class WeatherDto {
@@ -22,7 +24,7 @@ public class WeatherDto {
     private final int humidity;
 
     private final float windSpeed;
-    private final float cloudPercentage;
+    private final int cloudPercentage;
 
     private WeatherDto(WeatherDtoBuilder builder) {
         this.lon = builder.lon;
@@ -128,7 +130,7 @@ public class WeatherDto {
         return windSpeed;
     }
 
-    public float getCloudPercentage() {
+    public int getCloudPercentage() {
         return cloudPercentage;
     }
 
@@ -153,7 +155,7 @@ public class WeatherDto {
         private int humidity;
 
         private float windSpeed;
-        private float cloudPercentage;
+        private int cloudPercentage;
 
         public WeatherDtoBuilder withLon(float lon) {
             this.lon = lon;
@@ -181,15 +183,14 @@ public class WeatherDto {
         }
 
         public WeatherDtoBuilder withSunrise(long sunrise) {
-            this.sunrise = getFormattedLocalDateTime(sunrise, " UTC");
+            this.sunrise = getFormattedLocalDateTime(sunrise, ZoneOffset.UTC);
             return this;
         }
 
         public WeatherDtoBuilder withSunset(long sunset) {
-            this.sunset = getFormattedLocalDateTime(sunset, " UTC");
+            this.sunset = getFormattedLocalDateTime(sunset, ZoneOffset.UTC);
             return this;
         }
-
 
 
         public WeatherDtoBuilder withVisibilityInMeters(int visibilityInMeters) {
