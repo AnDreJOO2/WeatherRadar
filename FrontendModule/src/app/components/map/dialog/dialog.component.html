@@ -1,4 +1,21 @@
 <h2 mat-dialog-title>Weather for {{weatherDto().cityName}}</h2>
 <div mat-dialog-content>
-
+  <mat-radio-group aria-label="Select an option">
+    <mat-radio-button checked value="1">Current weather</mat-radio-button>
+    <mat-radio-button value="2">Five days forecast</mat-radio-button>
+  </mat-radio-group>
+  <div class="container">
+    <p><b>Description: </b>{{weatherDto().description}}</p>
+    <p><b>Temperature: </b>{{weatherDto().temperature}}<span>&#8451;</span></p>
+    <p><b>Minimum temperature: </b>{{weatherDto().minimumTemperature}}<span>&#8451;</span></p>
+    <p><b>Maximum temperature: </b>{{weatherDto().maximumTemperature}}<span>&#8451;</span></p>
+    <p><b>Perceptible temperature: </b>{{weatherDto().perceptibleTemperature}}<span>&#8451;</span></p>
+    <p><b>Cloud level: </b>{{weatherDto().cloudPercentage}}<span>%</span></p>
+    <p><b>Humidity level: </b>{{weatherDto().humidity}}<span>%</span></p>
+    <p><b>Pressure: </b>{{weatherDto().pressure}}<span>hPa</span></p>
+    <p><b>Wind speed: </b>{{weatherDto().windSpeed}}<span>m/s</span></p>
+    <p><b>Visibility: </b>{{weatherDto().visibilityInMeters}}<span>m</span></p>
+    <p><b>Sunrise time: </b>{{weatherDto().sunrise}}</p>
+    <p><b>Sunset time: </b>{{weatherDto().sunset}}</p>
+  </div>
 </div>
