@@ -1,6 +1,6 @@
-package com.example.backendmodule.weatherclient.response;
+package com.example.backendmodule.weatherclient.response.forecast;
 
-public class WeatherServiceResponseMainDto {
+public class ForecastServiceResponseMainDto {
 
     private float temp;
     private float feels_like;
@@ -32,5 +32,4 @@ public class WeatherServiceResponseMainDto {
     public int getHumidity() {
         return humidity;
     }
-
 }

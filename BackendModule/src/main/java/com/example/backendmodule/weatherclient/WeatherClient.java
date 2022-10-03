@@ -3,7 +3,8 @@ package com.example.backendmodule.weatherclient;
 import com.example.backendmodule.model.WeatherDto;
 import com.example.backendmodule.weatherclient.configuration.WeatherApiConfiguration;
 import com.example.backendmodule.weatherclient.mapper.ResponseMapper;
-import com.example.backendmodule.weatherclient.response.WeatherServiceResponseDto;
+import com.example.backendmodule.weatherclient.response.forecast.ForecastServiceResponseDto;
+import com.example.backendmodule.weatherclient.response.weather.WeatherServiceResponseDto;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
@@ -36,6 +37,14 @@ public class WeatherClient {
                 lat,
                 lon);
         return ResponseMapper.mapWeatherServiceResponseToDto().apply(response);
+    }
+
+    public ForecastServiceResponseDto getForecast(float lat, float lon) {
+        return getApiCall("forecast?appid={API_KEY}&lat={lat}&lon={lon}",
+                ForecastServiceResponseDto.class,
+                configuration.getAPI_KEY(),
+                lat,
+                lon);
     }
 
     public <T> T getApiCall(String url, Class<T> responseType, Object... objects) {

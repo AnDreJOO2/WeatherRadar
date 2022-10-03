@@ -1,8 +1,6 @@
 package com.example.backendmodule.model;
 
-import java.time.Instant;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
+import static com.example.backendmodule.weatherclient.response.forecast.processing.Utils.getFormattedLocalDateTime;
 
 public class WeatherDto {
 
@@ -12,8 +10,8 @@ public class WeatherDto {
     private final String cityName;
     private final String description;
 
-    private final ZonedDateTime sunrise;
-    private final ZonedDateTime sunset;
+    private final String sunrise;
+    private final String sunset;
     private final int visibilityInMeters;
 
     private final float temperature;
@@ -90,11 +88,11 @@ public class WeatherDto {
         return description;
     }
 
-    public ZonedDateTime getSunrise() {
+    public String getSunrise() {
         return sunrise;
     }
 
-    public ZonedDateTime getSunset() {
+    public String getSunset() {
         return sunset;
     }
 
@@ -143,8 +141,8 @@ public class WeatherDto {
         private String cityName;
         private String description;
 
-        private ZonedDateTime sunrise;
-        private ZonedDateTime sunset;
+        private String sunrise;
+        private String sunset;
         private int visibilityInMeters;
 
         private float temperature;
@@ -183,16 +181,16 @@ public class WeatherDto {
         }
 
         public WeatherDtoBuilder withSunrise(long sunrise) {
-            Instant instant = Instant.ofEpochSecond(sunrise);
-            this.sunrise = instant.atZone(ZoneId.of("Europe/Warsaw"));
+            this.sunrise = getFormattedLocalDateTime(sunrise, " UTC");
             return this;
         }
 
         public WeatherDtoBuilder withSunset(long sunset) {
-            Instant instant = Instant.ofEpochSecond(sunset);
-            this.sunset = instant.atZone(ZoneId.of("Europe/Warsaw"));
+            this.sunset = getFormattedLocalDateTime(sunset, " UTC");
             return this;
         }
+
+
 
         public WeatherDtoBuilder withVisibilityInMeters(int visibilityInMeters) {
             this.visibilityInMeters = visibilityInMeters;

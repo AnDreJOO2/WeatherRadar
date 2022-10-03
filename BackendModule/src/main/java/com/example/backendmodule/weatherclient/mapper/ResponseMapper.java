@@ -1,9 +1,10 @@
 package com.example.backendmodule.weatherclient.mapper;
 
 import com.example.backendmodule.model.WeatherDto;
-import com.example.backendmodule.weatherclient.response.WeatherServiceResponseDto;
+import com.example.backendmodule.weatherclient.response.weather.WeatherServiceResponseDto;
 
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class ResponseMapper {
 
@@ -14,7 +15,7 @@ public class ResponseMapper {
                         .withLat(response.getCoord().getLat())
                         .withCountry(response.getSys().getCountry())
                         .withCityName(response.getName())
-                        .withDescription(String.valueOf(response.getWeather().stream().map(element -> element.getDescription()).findFirst()))
+                        .withDescription(response.getWeather().get(0).getDescription())
                         .withSunrise(response.getSys().getSunrise())
                         .withSunset(response.getSys().getSunset())
                         .withVisibilityInMeters(response.getVisibility())
