@@ -1,6 +1,6 @@
-package com.example.backendmodule.weatherclient.response;
+package com.example.backendmodule.weatherclient.response.forecast;
 
-public class WeatherServiceResponseCoordDto {
+public class ForecastServiceResponseCoordDto {
 
     private float lon;
     private float lat;

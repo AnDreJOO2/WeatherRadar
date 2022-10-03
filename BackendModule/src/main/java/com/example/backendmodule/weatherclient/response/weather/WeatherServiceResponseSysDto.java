@@ -1,4 +1,4 @@
-package com.example.backendmodule.weatherclient.response;
+package com.example.backendmodule.weatherclient.response.weather;
 
 public class WeatherServiceResponseSysDto {
 
