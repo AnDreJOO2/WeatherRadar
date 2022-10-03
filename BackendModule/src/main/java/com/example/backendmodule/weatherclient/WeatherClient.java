@@ -12,7 +12,7 @@ public class WeatherClient {
 
     public static final String API_URL = "https://api.openweathermap.org/data/2.5/";
     public static final String UNITS_METRIC_PARAMETER = "&units=metric";
-    public static final String LANG_PL_PARAMETER = "&lang=pl";
+    public static final String LANG_ENG_PARAMETER = "&lang=eng";
     private final WeatherApiConfiguration configuration;
 
     private final RestTemplate restTemplate = new RestTemplate();
@@ -29,8 +29,17 @@ public class WeatherClient {
         return ResponseMapper.mapWeatherServiceResponseToDto().apply(response);
     }
 
+    public WeatherDto getWeatherForCoords(float lat, float lon) {
+        WeatherServiceResponseDto response = getApiCall("weather?appid={API_KEY}&lat={lat}&lon={lon}",
+                WeatherServiceResponseDto.class,
+                configuration.getAPI_KEY(),
+                lat,
+                lon);
+        return ResponseMapper.mapWeatherServiceResponseToDto().apply(response);
+    }
+
     public <T> T getApiCall(String url, Class<T> responseType, Object... objects) {
-        return restTemplate.getForObject(API_URL+url + UNITS_METRIC_PARAMETER + LANG_PL_PARAMETER,
+        return restTemplate.getForObject(API_URL + url + UNITS_METRIC_PARAMETER + LANG_ENG_PARAMETER,
                 responseType, objects);
     }
 }
