@@ -5,8 +5,8 @@ export interface WeatherDto {
   country: string;
   cityName: string;
   description: string;
-  sunrise: Date;
-  sunset: Date;
+  sunrise: string;
+  sunset: string;
   visibilityInMeters: number;
   temperature: number;
   perceptibleTemperature: number;
