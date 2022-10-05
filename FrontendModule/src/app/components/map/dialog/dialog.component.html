@@ -1,5 +1,4 @@
-<h2 mat-dialog-title *ngIf="selectedOption === 0">Weather for {{getWeatherDto().cityName}}</h2>
-<h2 mat-dialog-title *ngIf="selectedOption === 1">Forecast for {{getWeatherDto().cityName}}</h2>
+<h2 mat-dialog-title >{{getHeader()}}</h2>
 <div mat-dialog-content>
   <mat-radio-group [(ngModel)]="selectedOption" aria-label="Select an option">
     <mat-radio-button class="mat-radio-button" [value]="0">Current weather</mat-radio-button>

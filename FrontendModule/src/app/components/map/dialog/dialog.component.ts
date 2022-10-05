@@ -14,6 +14,26 @@ export class DialogComponent implements OnInit {
   selectedOption: number;
   private _forecastDto: ForecastDto;
 
+  getHeader() {
+    let header: string;
+
+    if (this.selectedOption === 0) {
+      header = 'Weather for '
+    } else {
+      header = 'Forecast for '
+    }
+
+    if (this.getWeatherDto().cityName !== '') {
+      header += this.getWeatherDto().cityName;
+    } else {
+      header += this.getWeatherDto().lat;
+      header += ' | ';
+      header += this.getWeatherDto().lon;
+    }
+
+    return header;
+  }
+
   getForecastDto(): ForecastDto {
     return this._forecastDto;
   }
