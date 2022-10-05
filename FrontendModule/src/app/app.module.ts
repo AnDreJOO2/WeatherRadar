@@ -11,6 +11,8 @@ import { DialogComponent } from './components/map/dialog/dialog.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatRadioModule} from "@angular/material/radio";
 import {MatTableModule} from "@angular/material/table";
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import {MatTableModule} from "@angular/material/table";
     BrowserAnimationsModule,
     MatDialogModule,
     MatRadioModule,
-    MatTableModule
+    MatTableModule,
+    FontAwesomeModule,
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]
