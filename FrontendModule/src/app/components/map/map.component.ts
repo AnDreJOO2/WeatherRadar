@@ -33,11 +33,11 @@ export class MapComponent implements OnInit {
     });
 
     this.map.on(
-        "dblclick", data => this.weatherService.getWeatherForCoords(data.latlng.lat, data.latlng.lng).subscribe(
-            responseData => {
-              this.pinPlace(responseData)
-            }
-        ))
+      "dblclick", data => this.weatherService.getWeatherForCoords(data.latlng.lat, data.latlng.lng).subscribe(
+        responseData => {
+          this.pinPlace(responseData)
+        }
+      ))
 
   }
 
@@ -48,7 +48,7 @@ export class MapComponent implements OnInit {
 
     let marker = L.marker([responseData.lat, responseData.lon])
       .openPopup()
-      .on("click",() => this.openDialog(responseData))
+      .on("click", () => this.openDialog(responseData))
       .addTo(this.map);
 
     this.markers.push(marker);

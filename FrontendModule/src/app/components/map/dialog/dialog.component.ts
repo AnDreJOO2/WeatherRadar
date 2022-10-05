@@ -11,6 +11,7 @@ import {ForecastDto} from "../../../interfaces/forecast-dto";
 })
 export class DialogComponent implements OnInit {
 
+  selectedOption: number;
   private _forecastDto: ForecastDto;
 
   getForecastDto(): ForecastDto {
@@ -30,15 +31,17 @@ export class DialogComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.selectedOption = 0;
   }
 
   getForecast() {
-    this._weatherService.getForecastForCoords(this.getWeatherDto().lat, this.getWeatherDto().lon).subscribe(
-      responseData => {
-        this._forecastDto = responseData;
-      }
-    )
+    if (this.getForecastDto() === undefined) {
+      this._weatherService.getForecastForCoords(this.getWeatherDto().lat, this.getWeatherDto().lon).subscribe(
+        responseData => {
+          this._forecastDto = responseData;
+        }
+      )
+    }
 
   }
-
 }
