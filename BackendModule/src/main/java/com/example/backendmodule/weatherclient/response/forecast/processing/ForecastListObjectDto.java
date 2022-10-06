@@ -1,5 +1,6 @@
 package com.example.backendmodule.weatherclient.response.forecast.processing;
 
+import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 
 public class ForecastListObjectDto {

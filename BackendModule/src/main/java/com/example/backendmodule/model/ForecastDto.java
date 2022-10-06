@@ -3,6 +3,7 @@ package com.example.backendmodule.model;
 import com.example.backendmodule.weatherclient.response.forecast.processing.ForecastListObjectDto;
 import com.example.backendmodule.weatherclient.response.forecast.processing.Utils;
 
+import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.util.List;
 
@@ -62,7 +63,7 @@ public class ForecastDto {
         return sunrise;
     }
 
-    public String getSunset() {
+     public String getSunset() {
         return sunset;
     }
 
