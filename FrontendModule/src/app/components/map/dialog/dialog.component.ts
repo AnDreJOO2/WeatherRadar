@@ -43,10 +43,10 @@ export class DialogComponent implements OnInit {
   }
 
   getWeatherService(): WeatherService {
-    return this._weatherService;
+    return this.weatherService;
   }
 
-  constructor(@Inject(MAT_DIALOG_DATA) private _weatherDto: WeatherDto, private _weatherService: WeatherService) {
+  constructor(@Inject(MAT_DIALOG_DATA) private _weatherDto: WeatherDto, private weatherService: WeatherService) {
 
   }
 
@@ -56,12 +56,15 @@ export class DialogComponent implements OnInit {
 
   getForecast() {
     if (this.getForecastDto() === undefined) {
-      this._weatherService.getForecastForCoords(this.getWeatherDto().lat, this.getWeatherDto().lon).subscribe(
+      this.weatherService.getForecastForCoords(this.getWeatherDto().lat, this.getWeatherDto().lon).subscribe(
         responseData => {
+          responseData.sunrise = this.weatherService.setDate(responseData.sunrise, true)
+          responseData.sunset = this.weatherService.setDate(responseData.sunset, true)
           this._forecastDto = responseData;
         }
       )
     }
 
   }
+
 }

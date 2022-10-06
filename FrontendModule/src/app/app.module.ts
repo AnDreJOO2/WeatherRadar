@@ -6,13 +6,14 @@ import {MapComponent} from './components/map/map.component';
 import {SearcherComponent} from './components/searcher/searcher.component';
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DialogComponent } from './components/map/dialog/dialog.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {DialogComponent} from './components/map/dialog/dialog.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatRadioModule} from "@angular/material/radio";
 import {MatTableModule} from "@angular/material/table";
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatTabsModule} from "@angular/material/tabs";
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     MatRadioModule,
     MatTableModule,
     FontAwesomeModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatTabsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

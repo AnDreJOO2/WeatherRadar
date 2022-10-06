@@ -9,3 +9,9 @@
 .fontawesome{
   margin-right:20px;
 }
+
+/deep/.mat-tab-label, /deep/.mat-tab-label-active{
+  min-width: 0!important;
+  padding: 0 0 0 10px!important;
+  margin: 0 0 5px 10px!important;
+}

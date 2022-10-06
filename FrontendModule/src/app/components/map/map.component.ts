@@ -35,6 +35,8 @@ export class MapComponent implements OnInit {
     this.map.on(
       "dblclick", data => this.weatherService.getWeatherForCoords(data.latlng.lat, data.latlng.lng).subscribe(
         responseData => {
+          responseData.sunrise = this.weatherService.setDate(responseData.sunrise, true)
+          responseData.sunset = this.weatherService.setDate(responseData.sunset, true)
           this.pinPlace(responseData)
         }
       ))
