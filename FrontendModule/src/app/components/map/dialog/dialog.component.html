@@ -1,5 +1,4 @@
-<h2 mat-dialog-title *ngIf="selectedOption === 0">Weather for {{getWeatherDto().cityName}}</h2>
-<h2 mat-dialog-title *ngIf="selectedOption === 1">Forecast for {{getWeatherDto().cityName}}</h2>
+<h2 mat-dialog-title>{{getHeader()}}</h2>
 <div mat-dialog-content>
   <mat-radio-group [(ngModel)]="selectedOption" aria-label="Select an option">
     <mat-radio-button class="mat-radio-button" [value]="0">Current weather</mat-radio-button>
@@ -14,7 +13,7 @@
             <div class="col-3"
                  matTooltip="Description of the weather"
                  [matTooltipPosition]="'above'"
-            ><i  class="fa-solid fa-message fa-2xl"></i></div>
+            ><i class="fa-solid fa-message fa-2xl"></i></div>
             <div class="col-9">{{getWeatherDto().description}}</div>
           </div>
         </div>
@@ -54,7 +53,7 @@
             <div class="col-3"
                  matTooltip="Minimum temperature"
                  [matTooltipPosition]="'above'"
-            ><i  class="fa-solid fa-temperature-arrow-down fa-2xl"></i></div>
+            ><i class="fa-solid fa-temperature-arrow-down fa-2xl"></i></div>
             <div class="col-9">{{getWeatherDto().minimumTemperature}}<span>&#8451;</span></div>
           </div>
         </div>
@@ -115,7 +114,10 @@
                  matTooltip="Sunrise time"
                  [matTooltipPosition]="'above'"
             ><i class="bi bi-sunrise-fill fa-2x"></i></div>
-            <div class="col-9">{{getWeatherDto().sunrise}}</div>
+            <div class="col-9 wrapper">
+              {{getWeatherService().setDate(getWeatherDto().sunrise, true)}}
+              {{getWeatherService().setDate(getWeatherDto().sunrise, false)}}
+            </div>
           </div>
         </div>
         <div class="col">
@@ -124,13 +126,26 @@
                  matTooltip="Sunset time"
                  [matTooltipPosition]="'above'"
             ><i class="bi bi-sunset-fill fa-2x"></i></div>
-            <div class="col-9">{{getWeatherDto().sunset}}</div>
+            <div class="col-9 wrapper">
+              {{getWeatherService().setDate(getWeatherDto().sunset, true)}}
+              {{getWeatherService().setDate(getWeatherDto().sunset, false)}}
+            </div>
           </div>
         </div>
       </div>
     </div>
     <div *ngIf="selectedOption === 1">
-      <p>b</p>
+      <mat-tab-group>
+        <mat-tab label="Today"> Content 1</mat-tab>
+        <mat-tab label="Tomorrow"> Content 2</mat-tab>
+        <mat-tab label="Third"> Content 3</mat-tab>
+        <mat-tab label="4"> Content 3</mat-tab>
+        <mat-tab label="5"> Content 3</mat-tab>
+      </mat-tab-group>
+      <li>
+
+      </li>
+
     </div>
   </div>
 </div>

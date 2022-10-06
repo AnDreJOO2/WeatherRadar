@@ -14,6 +14,26 @@ export class DialogComponent implements OnInit {
   selectedOption: number;
   private _forecastDto: ForecastDto;
 
+  getHeader() {
+    let header: string;
+
+    if (this.selectedOption === 0) {
+      header = 'Weather for '
+    } else {
+      header = 'Forecast for '
+    }
+
+    if (this.getWeatherDto().cityName !== '') {
+      header += this.getWeatherDto().cityName;
+    } else {
+      header += this.getWeatherDto().lat;
+      header += ' | ';
+      header += this.getWeatherDto().lon;
+    }
+
+    return header;
+  }
+
   getForecastDto(): ForecastDto {
     return this._forecastDto;
   }
@@ -23,10 +43,10 @@ export class DialogComponent implements OnInit {
   }
 
   getWeatherService(): WeatherService {
-    return this._weatherService;
+    return this.weatherService;
   }
 
-  constructor(@Inject(MAT_DIALOG_DATA) private _weatherDto: WeatherDto, private _weatherService: WeatherService) {
+  constructor(@Inject(MAT_DIALOG_DATA) private _weatherDto: WeatherDto, private weatherService: WeatherService) {
 
   }
 
@@ -36,12 +56,15 @@ export class DialogComponent implements OnInit {
 
   getForecast() {
     if (this.getForecastDto() === undefined) {
-      this._weatherService.getForecastForCoords(this.getWeatherDto().lat, this.getWeatherDto().lon).subscribe(
+      this.weatherService.getForecastForCoords(this.getWeatherDto().lat, this.getWeatherDto().lon).subscribe(
         responseData => {
+          responseData.sunrise = this.weatherService.setDate(responseData.sunrise, true)
+          responseData.sunset = this.weatherService.setDate(responseData.sunset, true)
           this._forecastDto = responseData;
         }
       )
     }
 
   }
+
 }
