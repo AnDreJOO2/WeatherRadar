@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {WeatherDto} from "../interfaces/weather-dto";
 import {Subject} from "rxjs";
 import {ForecastDto} from "../interfaces/forecast-dto";
+import {ForecastSegmentDto} from "../interfaces/forecast-segment-dto";
 
 @Injectable({
   providedIn: 'root'
@@ -35,7 +36,6 @@ export class WeatherService {
   }
 
   setDate(forecastTime: string, utcTime: boolean) {
-    console.log(forecastTime)
     let date = new Date(forecastTime);
     if (utcTime) {
       let utcSeconds: number | string = date.getUTCSeconds()
@@ -97,6 +97,52 @@ export class WeatherService {
       let localYear: number | string = date.getFullYear();
       return localHours + ':' + localMinutes + ':' + localSeconds + ' ' + localDay + '-' + localMonth + '-' + localYear + ' ' + timeZone;
     }
+  }
+
+  getTimeLine(firstElement: ForecastSegmentDto) {
+    let day = firstElement.forecastTime.substring(11, 13)
+    let month = firstElement.forecastTime.substring(14, 16)
+    return day + '-' + month
+
+  }
+
+  countLastIndexForFirstList(firstElement: ForecastSegmentDto): number {
+    let date = this.setDate(firstElement.forecastTime, true);
+    let hour: number = Number(date.substring(0, 2));
+    // possible hours in frame
+    // 0
+    // 3
+    // 6
+    // 9
+    // 12
+    // 15
+    // 18
+    // 21
+    if (hour === 0) {
+      return 7
+    }
+    if (hour === 3) {
+      return 6
+    }
+    if (hour === 6) {
+      return 5
+    }
+    if (hour === 9) {
+      return 4
+    }
+    if (hour === 12) {
+      return 3
+    }
+    if (hour === 15) {
+      return 2
+    }
+    if (hour === 18) {
+      return 1
+    }
+    if (hour === 21) {
+      return 0
+    }
+    return 0
   }
 
 }

@@ -14,6 +14,7 @@ import {MatTableModule} from "@angular/material/table";
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTabsModule} from "@angular/material/tabs";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 @NgModule({
   declarations: [
@@ -22,18 +23,19 @@ import {MatTabsModule} from "@angular/material/tabs";
     SearcherComponent,
     DialogComponent,
   ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    MatDialogModule,
-    MatRadioModule,
-    MatTableModule,
-    FontAwesomeModule,
-    MatTooltipModule,
-    MatTabsModule
-  ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        MatDialogModule,
+        MatRadioModule,
+        MatTableModule,
+        FontAwesomeModule,
+        MatTooltipModule,
+        MatTabsModule,
+        MatProgressSpinnerModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

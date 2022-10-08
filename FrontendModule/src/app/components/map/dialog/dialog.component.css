@@ -1,17 +1,21 @@
-.mat-radio-button{
+.mat-radio-button {
   margin-right: 50px;
 }
 
-.row{
+.row {
   font-size: 16px;
 }
 
-.fontawesome{
-  margin-right:20px;
+.fontawesome {
+  margin-right: 20px;
 }
 
-/deep/.mat-tab-label, /deep/.mat-tab-label-active{
-  min-width: 0!important;
-  padding: 0 0 0 10px!important;
-  margin: 0 0 5px 10px!important;
+/deep/ .mat-tab-label, /deep/ .mat-tab-label-active {
+  min-width: 0 !important;
+  padding: 0 0 0 20px !important;
+  margin: 0 0 5px 20px !important;
+}
+
+.mat-spinner {
+  margin: 0 auto;
 }
