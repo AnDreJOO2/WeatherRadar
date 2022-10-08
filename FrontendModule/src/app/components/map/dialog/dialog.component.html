@@ -136,9 +136,63 @@
     </div>
     <div *ngIf="selectedOption === 1 && loading === false">
       <mat-tab-group>
-        <mat-tab *ngFor="let segment of listOfForecastSegments" label="{{getWeatherService().getTimeLine(segment[0])}}">
+        <mat-tab *ngFor="let list of listOfForecastSegments" label="{{getWeatherService().getTimeLine(list[0])}}">
           <ng-template matTabContent>
-            <p>text</p>
+            <table class="table table-dark">
+              <thead>
+              <tr>
+                <th scope="col">Forecast time</th>
+                <th scope="col">Description</th>
+                <th scope="col">Cloud percentage</th>
+                <th scope="col">Temperature</th>
+                <th scope="col">Perceptible temperature</th>
+                <th scope="col">Minimum temperature</th>
+                <th scope="col">Maximum temperature</th>
+                <th scope="col">Weather pressure</th>
+                <th scope="col">Humidity</th>
+                <th scope="col">Wind speed</th>
+                <th scope="col">Visibility</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let segment of list">
+                <td>
+                  {{getWeatherService().setDate(segment.forecastTime, true)}}<br>
+                  {{getWeatherService().setDate(segment.forecastTime, false)}}
+                </td>
+                <td>
+                  {{segment.description}}
+                </td>
+                <td>
+                  {{segment.cloudPercentage}}<span>%</span>
+                </td>
+                <td>
+                  {{segment.temperature}}<span>&#8451;</span>
+                </td>
+                <td>
+                  {{segment.perceptibleTemperature}}<span>&#8451;</span>
+                </td>
+                <td>
+                  {{segment.minimumTemperature}}<span>&#8451;</span>
+                </td>
+                <td>
+                  {{segment.maximumTemperature}}<span>&#8451;</span>
+                </td>
+                <td>
+                  {{segment.pressure}}<span>hPa</span>
+                </td>
+                <td>
+                  {{segment.humidity}}<span>%</span>
+                </td>
+                <td>
+                  {{segment.windSpeed}}<span>m/s</span>
+                </td>
+                <td>
+                  {{segment.visibilityInMeters}}<span>m</span>
+                </td>
+              </tr>
+              </tbody>
+            </table>
           </ng-template>
         </mat-tab>
       </mat-tab-group>

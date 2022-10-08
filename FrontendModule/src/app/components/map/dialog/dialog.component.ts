@@ -109,7 +109,6 @@ export class DialogComponent implements OnInit {
     if (left > 0 && left < 8) {
       this.listOfForecastSegments.push(list.slice(nextStartIndex, 39))
     }
-
     this.loading = false;
   }
 

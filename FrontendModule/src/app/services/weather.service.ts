@@ -100,8 +100,8 @@ export class WeatherService {
   }
 
   getTimeLine(firstElement: ForecastSegmentDto) {
-    let day = firstElement.forecastTime.substring(11, 13)
-    let month = firstElement.forecastTime.substring(14, 16)
+    let day = firstElement.forecastTime.substring(9, 11)
+    let month = firstElement.forecastTime.substring(12, 14)
     return day + '-' + month
 
   }
