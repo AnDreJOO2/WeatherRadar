@@ -64,9 +64,10 @@ export class MapComponent implements OnInit {
 
   openDialog(responseData: WeatherDto) {
     let dialog = this.dialog.open(DialogComponent, {
-      height: '400px',
-      width: '600px',
-      data: responseData
+      height: '600px',
+      width: '800px',
+      data: responseData,
+      panelClass: 'dialog-main'
     });
 
 

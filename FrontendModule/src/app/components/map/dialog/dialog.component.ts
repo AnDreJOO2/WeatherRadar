@@ -74,9 +74,12 @@ export class DialogComponent implements OnInit {
         );
         setTimeout(() => {
           resolve(this.setLastFrameIndex())
-        }, 500)
+        }, 1000)
       })
+    } else {
+      return
     }
+
   }
 
   setLastFrameIndex() {
@@ -84,7 +87,7 @@ export class DialogComponent implements OnInit {
       this.lastFrameIndex = this.getWeatherService().countLastIndexForFirstList(this.getForecastDto().list[0])
       setTimeout(() => {
         resolve(this.setListOfForecastSegments(this.lastFrameIndex))
-      }, 500)
+      }, 1000)
     })
 
   }
@@ -109,7 +112,6 @@ export class DialogComponent implements OnInit {
     if (left > 0 && left < 8) {
       this.listOfForecastSegments.push(list.slice(nextStartIndex, 39))
     }
-
     this.loading = false;
   }
 
