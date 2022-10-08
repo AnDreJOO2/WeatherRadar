@@ -10,7 +10,7 @@ public class Utils {
     public static String getFormattedLocalDateTime(long sunset, ZoneOffset timeZone) {
         Instant instant = Instant.ofEpochSecond(sunset);
         LocalDateTime localDateTime = LocalDateTime.ofInstant(instant, timeZone);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss / dd-MM-yyyy");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss dd-MM-yyyy");
         return localDateTime.format(formatter) + timeZone;
     }
 }
