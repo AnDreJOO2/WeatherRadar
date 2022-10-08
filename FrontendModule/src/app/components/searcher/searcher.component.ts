@@ -16,8 +16,8 @@ export class SearcherComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  checkIfCityNameIsEmpty(){
-    if(this.cityName !== ""){
+  checkIfCityNameIsEmpty() {
+    if (this.cityName !== "") {
       this.getWeatherForCity();
     }
   }

@@ -17,6 +17,7 @@ export class DialogComponent implements OnInit {
 
   lastFrameIndex: number;
   listOfForecastSegments: ForecastSegmentDto[][] = []
+  loading: boolean;
 
   getHeader() {
     let header: string;
@@ -60,8 +61,9 @@ export class DialogComponent implements OnInit {
   }
 
   getForecast() {
-    if (this.getForecastDto() === undefined) {
 
+    if (this.getForecastDto() === undefined) {
+      this.loading = true;
       new Promise((resolve) => {
         this.weatherService.getForecastForCoords(this.getWeatherDto().lat, this.getWeatherDto().lon).subscribe(
           responseData => {
@@ -108,7 +110,7 @@ export class DialogComponent implements OnInit {
       this.listOfForecastSegments.push(list.slice(nextStartIndex, 39))
     }
 
-
+    this.loading = false;
   }
 
 }

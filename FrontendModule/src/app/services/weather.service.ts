@@ -100,14 +100,8 @@ export class WeatherService {
   }
 
   getTimeLine(firstElement: ForecastSegmentDto) {
-    // 0-7 - indexes of data frames for 1st day
-    // 8-15 indexes of data frames for 1st day
-    // 16-23
-    // 24-31
-    // 32-39
-    let date = this.setDate(firstElement.forecastTime, true);
-    let day = date.substring(9, 11)
-    let month = date.substring(12, 14)
+    let day = firstElement.forecastTime.substring(11, 13)
+    let month = firstElement.forecastTime.substring(14, 16)
     return day + '-' + month
 
   }
