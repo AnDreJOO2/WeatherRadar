@@ -7,128 +7,130 @@
   <div class="container">
     <hr>
     <div *ngIf="selectedOption === 0">
-      <div class="row">
-        <div class="col">
-          <div class="row">
-            <div class="col-3"
-                 matTooltip="Description of the weather"
-                 [matTooltipPosition]="'above'"
-            ><i class="fa-solid fa-message fa-2xl"></i></div>
-            <div class="col-9">{{getWeatherDto().description}}</div>
+      <div class="weather-view">
+        <div class="row">
+          <div class="col">
+            <div class="row">
+              <div class="col-3"
+                   matTooltip="Description of the weather"
+                   [matTooltipPosition]="'above'"
+              ><i class="fa-solid fa-message fa-2xl"></i></div>
+              <div class="col-9">{{getWeatherDto().description}}</div>
+            </div>
           </div>
-        </div>
-        <div class="col">
-          <div class="row">
-            <div class="col-3"
-                 matTooltip="Cloud percentage"
-                 [matTooltipPosition]="'above'"
-            ><i class="fa-solid fa-cloud fa-2xl"></i></div>
-            <div class="col-9">{{getWeatherDto().cloudPercentage}}<span>%</span></div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <div class="row">
-            <div class="col-3"
-                 matTooltip="Temperature"
-                 [matTooltipPosition]="'above'"
-            ><i class="fa-solid fa-temperature-half fa-2xl"></i></div>
-            <div class="col-9">{{getWeatherDto().temperature}}<span>&#8451;</span></div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="row">
-            <div class="col-3"
-                 matTooltip="Perceptible temperature"
-                 [matTooltipPosition]="'above'"
-            ><i class="fa-solid fa-temperature-quarter fa-2xl"></i></div>
-            <div class="col-9">{{getWeatherDto().perceptibleTemperature}}<span>&#8451;</span></div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <div class="row">
-            <div class="col-3"
-                 matTooltip="Minimum temperature"
-                 [matTooltipPosition]="'above'"
-            ><i class="fa-solid fa-temperature-arrow-down fa-2xl"></i></div>
-            <div class="col-9">{{getWeatherDto().minimumTemperature}}<span>&#8451;</span></div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="row">
-            <div class="col-3"
-                 matTooltip="Maximum temperature"
-                 [matTooltipPosition]="'above'"
-            ><i class="fa-solid fa-temperature-arrow-up fa-2xl"></i></div>
-            <div class="col-9">{{getWeatherDto().maximumTemperature}}<span>&#8451;</span></div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <div class="row">
-            <div class="col-3"
-                 matTooltip="Weather pressure"
-                 [matTooltipPosition]="'above'"
-            ><i class="fa-solid fa-arrows-down-to-line fa-2xl"></i></div>
-            <div class="col-9">{{getWeatherDto().pressure}}<span>hPa</span></div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="row">
-            <div class="col-3"
-                 matTooltip="Humidity"
-                 [matTooltipPosition]="'above'"
-            ><i class="fa-solid fa-water fa-2xl"></i></div>
-            <div class="col-9">{{getWeatherDto().humidity}}<span>%</span></div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <div class="row">
-            <div class="col-3"
-                 matTooltip="Wind speed"
-                 [matTooltipPosition]="'above'"
-            ><i class="fa-solid fa-wind fa-2xl"></i></div>
-            <div class="col-9">{{getWeatherDto().windSpeed}}<span>m/s</span></div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="row">
-            <div class="col-3"
-                 matTooltip="Visibility"
-                 [matTooltipPosition]="'above'"
-            ><i class="fa-solid fa-eye fa-2xl"></i></div>
-            <div class="col-9">{{getWeatherDto().visibilityInMeters}}<span>m</span></div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <div class="row">
-            <div class="col-3"
-                 matTooltip="Sunrise time"
-                 [matTooltipPosition]="'above'"
-            ><i class="bi bi-sunrise-fill fa-2x"></i></div>
-            <div class="col-9 wrapper">
-              {{getWeatherService().setDate(getWeatherDto().sunrise, true)}}
-              {{getWeatherService().setDate(getWeatherDto().sunrise, false)}}
+          <div class="col">
+            <div class="row">
+              <div class="col-3"
+                   matTooltip="Cloud percentage"
+                   [matTooltipPosition]="'above'"
+              ><i class="fa-solid fa-cloud fa-2xl"></i></div>
+              <div class="col-9">{{getWeatherDto().cloudPercentage}}<span>%</span></div>
             </div>
           </div>
         </div>
-        <div class="col">
-          <div class="row">
-            <div class="col-3 sunset-icon"
-                 matTooltip="Sunset time"
-                 [matTooltipPosition]="'above'"
-            ><i class="bi bi-sunset-fill fa-2x"></i></div>
-            <div class="col-9 wrapper">
-              {{getWeatherService().setDate(getWeatherDto().sunset, true)}}
-              {{getWeatherService().setDate(getWeatherDto().sunset, false)}}
+        <div class="row">
+          <div class="col">
+            <div class="row">
+              <div class="col-3"
+                   matTooltip="Temperature"
+                   [matTooltipPosition]="'above'"
+              ><i class="fa-solid fa-temperature-half fa-2xl"></i></div>
+              <div class="col-9">{{getWeatherDto().temperature}}<span>&#8451;</span></div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="row">
+              <div class="col-3"
+                   matTooltip="Perceptible temperature"
+                   [matTooltipPosition]="'above'"
+              ><i class="fa-solid fa-temperature-quarter fa-2xl"></i></div>
+              <div class="col-9">{{getWeatherDto().perceptibleTemperature}}<span>&#8451;</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="row">
+              <div class="col-3"
+                   matTooltip="Minimum temperature"
+                   [matTooltipPosition]="'above'"
+              ><i class="fa-solid fa-temperature-arrow-down fa-2xl"></i></div>
+              <div class="col-9">{{getWeatherDto().minimumTemperature}}<span>&#8451;</span></div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="row">
+              <div class="col-3"
+                   matTooltip="Maximum temperature"
+                   [matTooltipPosition]="'above'"
+              ><i class="fa-solid fa-temperature-arrow-up fa-2xl"></i></div>
+              <div class="col-9">{{getWeatherDto().maximumTemperature}}<span>&#8451;</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="row">
+              <div class="col-3"
+                   matTooltip="Weather pressure"
+                   [matTooltipPosition]="'above'"
+              ><i class="fa-solid fa-arrows-down-to-line fa-2xl"></i></div>
+              <div class="col-9">{{getWeatherDto().pressure}}<span>hPa</span></div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="row">
+              <div class="col-3"
+                   matTooltip="Humidity"
+                   [matTooltipPosition]="'above'"
+              ><i class="fa-solid fa-water fa-2xl"></i></div>
+              <div class="col-9">{{getWeatherDto().humidity}}<span>%</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="row">
+              <div class="col-3"
+                   matTooltip="Wind speed"
+                   [matTooltipPosition]="'above'"
+              ><i class="fa-solid fa-wind fa-2xl"></i></div>
+              <div class="col-9">{{getWeatherDto().windSpeed}}<span>m/s</span></div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="row">
+              <div class="col-3"
+                   matTooltip="Visibility"
+                   [matTooltipPosition]="'above'"
+              ><i class="fa-solid fa-eye fa-2xl"></i></div>
+              <div class="col-9">{{getWeatherDto().visibilityInMeters}}<span>m</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="row">
+              <div class="col-3"
+                   matTooltip="Sunrise time"
+                   [matTooltipPosition]="'above'"
+              ><i class="bi bi-sunrise-fill fa-2x"></i></div>
+              <div class="col-9 wrapper">
+                {{getWeatherService().setDate(getWeatherDto().sunrise, true)}}
+                {{getWeatherService().setDate(getWeatherDto().sunrise, false)}}
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="row">
+              <div class="col-3 sunset-icon"
+                   matTooltip="Sunset time"
+                   [matTooltipPosition]="'above'"
+              ><i class="bi bi-sunset-fill fa-2x"></i></div>
+              <div class="col-9 wrapper">
+                {{getWeatherService().setDate(getWeatherDto().sunset, true)}}
+                {{getWeatherService().setDate(getWeatherDto().sunset, false)}}
+              </div>
             </div>
           </div>
         </div>

@@ -36,67 +36,59 @@ export class WeatherService {
   }
 
   setDate(forecastTime: string, utcTime: boolean) {
-    let date = new Date(forecastTime);
+
+    let substringHour: number | string = Number(forecastTime.substring(0, 2))
+    if (substringHour < 10) {
+      substringHour = '0' + substringHour;
+    }
+
+    let substringMinute: number | string = Number(forecastTime.substring(3, 5))
+    if (substringMinute < 10) {
+      substringMinute = '0' + substringMinute;
+    }
+
+    let substringSeconds: number | string = Number(forecastTime.substring(6, 8))
+    if (substringSeconds < 10) {
+      substringSeconds = '0' + substringSeconds;
+    }
+
+    let substringDay: number | string = Number(forecastTime.substring(9, 11))
+    if (substringDay < 10) {
+      substringDay = '0' + substringDay;
+    }
+
+    let substringMonth: number | string = Number(forecastTime.substring(12, 14))
+    if (substringMonth < 10) {
+      substringMonth = '0' + substringMonth;
+    }
+    let substringYear: number | string = Number(forecastTime.substring(15, 19))
+    let message = substringHour + ":" + substringMinute + ":" + substringSeconds + " " + substringDay + "-" + substringMonth + "-" + substringYear;
     if (utcTime) {
-      let utcSeconds: number | string = date.getUTCSeconds()
-      if (utcSeconds < 10) {
-        utcSeconds = '0' + utcSeconds;
-      }
-
-      let utcMinutes: number | string = date.getUTCMinutes()
-      if (utcMinutes < 10) {
-        utcMinutes = '0' + utcMinutes;
-      }
-
-      let utcHours: number | string = date.getUTCHours()
-      if (utcHours < 10) {
-        utcHours = '0' + utcHours;
-      }
-
-      let utcDay: number | string = date.getUTCDate();
-      if (utcDay < 10) {
-        utcDay = '0' + utcDay;
-      }
-
-      let utcMonth: number | string = date.getUTCMonth() + 1;
-      if (utcMonth < 10) {
-        utcMonth = '0' + utcMonth;
-      }
-
-      let utcYear: number | string = date.getUTCFullYear();
-      return utcHours + ':' + utcMinutes + ':' + utcSeconds + ' ' + utcDay + '-' + utcMonth + '-' + utcYear + ' UTC';
-
+      message = message + " UTC"
     } else {
 
-      let timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-      let localSeconds: number | string = date.getSeconds()
-      if (localSeconds < 10) {
-        localSeconds = '0' + localSeconds;
-      }
-
-      let localMinutes: number | string = date.getMinutes()
-      if (localMinutes < 10) {
-        localMinutes = '0' + localMinutes;
-      }
-
-      let localHours: number | string = date.getHours()
-      if (localHours < 10) {
-        localHours = '0' + localHours;
-      }
-
-      let localDay: number | string = date.getDate();
-      if (localDay < 10) {
-        localDay = '0' + localDay;
-      }
-
-      let localMonth: number | string = date.getMonth() + 1;
-      if (localMonth < 10) {
-        localMonth = '0' + localMonth;
-      }
-
-      let localYear: number | string = date.getFullYear();
-      return localHours + ':' + localMinutes + ':' + localSeconds + ' ' + localDay + '-' + localMonth + '-' + localYear + ' ' + timeZone;
+      return this.convertOffset()
     }
+
+    return message
+  }
+
+  convertOffset() {
+    let timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    let offset = new Date().getTimezoneOffset().toString();
+    let response: string = ""
+
+    if (offset.substring(0, 1) === '-') {
+      response += "+"
+    } else {
+      response += "-"
+    }
+
+    let number = Number(offset.substring(1,));
+    number = number / 60
+    response += String(number)
+
+    return response + ' ' + timeZone
   }
 
   getTimeLine(firstElement: ForecastSegmentDto) {

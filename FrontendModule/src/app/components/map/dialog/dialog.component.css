@@ -19,3 +19,17 @@
 .mat-spinner {
   margin: 0 auto;
 }
+
+.table {
+  font-size: 12px;
+  width: 80%;
+  height: 80%;
+}
+
+.weather-view {
+  margin-top: 5%;
+}
+
+.container {
+  background-color: #ffffdc;
+}
