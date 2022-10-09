@@ -116,7 +116,7 @@
                    [matTooltipPosition]="'above'"
               ><i class="bi bi-sunrise-fill fa-2x"></i></div>
               <div class="col-9 wrapper">
-                {{getWeatherService().setDate(getWeatherDto().sunrise, true)}}
+                {{getWeatherService().setDate(getWeatherDto().sunrise, true)}}<br>
                 {{getWeatherService().setDate(getWeatherDto().sunrise, false)}}
               </div>
             </div>
@@ -128,7 +128,7 @@
                    [matTooltipPosition]="'above'"
               ><i class="bi bi-sunset-fill fa-2x"></i></div>
               <div class="col-9 wrapper">
-                {{getWeatherService().setDate(getWeatherDto().sunset, true)}}
+                {{getWeatherService().setDate(getWeatherDto().sunset, true)}}<br>
                 {{getWeatherService().setDate(getWeatherDto().sunset, false)}}
               </div>
             </div>
