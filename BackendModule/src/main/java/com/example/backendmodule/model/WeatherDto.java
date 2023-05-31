@@ -1,6 +1,5 @@
 package com.example.backendmodule.model;
 
-import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 
 import static com.example.backendmodule.weatherclient.response.forecast.processing.Utils.getFormattedLocalDateTime;
