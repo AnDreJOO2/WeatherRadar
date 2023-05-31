@@ -78,7 +78,7 @@ The screenshot presents you percentage coverage of these tests.
 
 # Summary
 
-Project was made for learning purposes.
+Project was made to learning purposes.
 
 I hope it will be useful to you, enjoy :3
 
