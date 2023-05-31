@@ -70,69 +70,6 @@ public class WeatherDto {
                 '}';
     }
 
-    public float getLon() {
-        return lon;
-    }
-
-    public float getLat() {
-        return lat;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public String getCityName() {
-        return cityName;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public String getSunrise() {
-        return sunrise;
-    }
-
-    public String getSunset() {
-        return sunset;
-    }
-
-    public int getVisibilityInMeters() {
-        return visibilityInMeters;
-    }
-
-    public float getTemperature() {
-        return temperature;
-    }
-
-    public float getPerceptibleTemperature() {
-        return perceptibleTemperature;
-    }
-
-    public float getMinimumTemperature() {
-        return minimumTemperature;
-    }
-
-    public float getMaximumTemperature() {
-        return maximumTemperature;
-    }
-
-    public int getPressure() {
-        return pressure;
-    }
-
-    public int getHumidity() {
-        return humidity;
-    }
-
-    public float getWindSpeed() {
-        return windSpeed;
-    }
-
-    public int getCloudPercentage() {
-        return cloudPercentage;
-    }
 
     public static class WeatherDtoBuilder {
 

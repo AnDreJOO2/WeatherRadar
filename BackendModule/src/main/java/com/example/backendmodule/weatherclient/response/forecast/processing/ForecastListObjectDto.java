@@ -1,6 +1,5 @@
 package com.example.backendmodule.weatherclient.response.forecast.processing;
 
-import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 
 public class ForecastListObjectDto {
@@ -29,50 +28,6 @@ public class ForecastListObjectDto {
         this.cloudPercentage = builder.cloudPercentage;
         this.windSpeed = builder.windSpeed;
         this.visibilityInMeters = builder.visibilityInMeters;
-    }
-
-    public String getForecastTime() {
-        return forecastTime;
-    }
-
-    public float getMinimumTemperature() {
-        return minimumTemperature;
-    }
-
-    public float getMaximumTemperature() {
-        return maximumTemperature;
-    }
-
-    public float getTemperature() {
-        return temperature;
-    }
-
-    public float getPerceptibleTemperature() {
-        return perceptibleTemperature;
-    }
-
-    public int getPressure() {
-        return pressure;
-    }
-
-    public int getHumidity() {
-        return humidity;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public int getCloudPercentage() {
-        return cloudPercentage;
-    }
-
-    public float getWindSpeed() {
-        return windSpeed;
-    }
-
-    public int getVisibilityInMeters() {
-        return visibilityInMeters;
     }
 
     public static class ForecastListObjectDtoBuilder {
