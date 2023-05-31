@@ -18,6 +18,8 @@ Application for checking the current weather and forecast for any place on Earth
 
 - Spring Boot / Java
 - Maven
+- AssertJ
+- Mockito
 
 ## Frontend
 
@@ -26,7 +28,7 @@ Application for checking the current weather and forecast for any place on Earth
 
 # API
 
-The data of weather come from service [OpenWeatherMap.org](https://openweathermap.org/).
+The weather data is provided by [OpenWeatherMap.org](https://openweathermap.org/).
 
 # How to run
 
@@ -66,6 +68,13 @@ Run http://localhost:4200/ in your browser.
 ### You can easily change the search target, the answer is almost immediate.
 
 ![ Alt text](readme-elements/few-weather-response-by-name.gif)
+
+# Tests
+
+Application is covered by unit tests.
+The screenshot presents you percentage coverage of these tests.
+
+![ Alt text](readme-elements/tests.png)
 
 # Summary
 
