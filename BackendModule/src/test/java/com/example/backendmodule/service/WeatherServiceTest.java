@@ -42,6 +42,10 @@ class WeatherServiceTest {
                 .withDescription("Sunny day")
                 .withPressure(1005)
                 .withMaximumTemperature(25)
+                .withSunset(63456L)
+                .withVisibilityInMeters(150)
+                .withTemperature(26.3F)
+                .withPerceptibleTemperature(28.2F)
                 .withMinimumTemperature(19).build();
 
         //when
@@ -54,8 +58,8 @@ class WeatherServiceTest {
     @Test
     void shouldGetWeatherForCoords() {
         //given
-        float givenLat = 48.864716f;
-        float givenLon = 2.349014f;
+        float givenLat = 48.864716F;
+        float givenLon = 2.349014F;
 
         WeatherDto expectedWeatherDto = new WeatherDto.WeatherDtoBuilder()
                 .withCityName("Paris")
@@ -65,8 +69,9 @@ class WeatherServiceTest {
                 .withPressure(1005)
                 .withMaximumTemperature(24)
                 .withHumidity(44)
-                .withWindSpeed(33.4f)
+                .withWindSpeed(33.4F)
                 .withLat(givenLat)
+                .withSunrise(22223L)
                 .withLon(givenLon)
                 .withMinimumTemperature(17).build();
 
@@ -88,6 +93,10 @@ class WeatherServiceTest {
                 .withLat(givenLat)
                 .withLon(givenLon)
                 .withCountry("Spain")
+                .withCod(332)
+                .withCnt(235)
+                .withSunrise(22222L)
+                .withSunset(33333L)
                 .withList(List.of(
                         new ForecastListObjectDto.ForecastListObjectDtoBuilder().withWindSpeed(23.4f).build(),
                         new ForecastListObjectDto.ForecastListObjectDtoBuilder().withHumidity(44).build(),
